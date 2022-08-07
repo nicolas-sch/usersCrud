@@ -1,19 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from './pages/home';
 import Users from './pages/users';
 
-function Routes() {
+function AppRoutes() {
 
     return(
-        <Router>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/users" component={Users}/>
-            </Switch>
-        </Router>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />}/>
+                <Route path="/users" element={<Users />}/>
+            </Routes>
+        </BrowserRouter>
     )
 }
 
-export default Routes;
+export default AppRoutes;

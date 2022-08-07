@@ -1,19 +1,21 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import People from '../../Assets/People.svg';
-import Arrow from '../../Assets/arrow_button.svg';
+import { useNavigate } from "react-router-dom";
+import People from '../../assets/People.svg';
+import Arrow from '../../assets/arrow_button.svg';
+import H1 from "../../components/Title";
+import ContainerItens from "../../components/ContainerItens";
+import Button from "../../components/Button";
 import { 
   Container, 
-  H1, 
   Image, 
-  ContainerItens, 
   InputLabel, 
   Input, 
-  Button
 } from './styles';
 
 const App = () => {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
   const inputName = useRef();
   const inputAge = useRef();
 
@@ -23,9 +25,9 @@ const App = () => {
       age:inputAge.current.value
     });
 
-    console.log(newUser)
-
     setUsers([...users, newUser])
+
+    navigate('/users')
   }
 
   return (
@@ -39,7 +41,9 @@ const App = () => {
         <InputLabel>Idade</InputLabel>
         <Input ref={inputAge} placeholder="Idade"/>
 
-        <Button onClick={addNewUser}>Cadastrar <img alt="seta" src={Arrow}/></Button>
+        <Button onClick={addNewUser}>
+          Cadastrar <img alt="seta" src={Arrow}/>
+        </Button>
       </ContainerItens>
     </Container>
   )
